@@ -235,6 +235,11 @@ class SingleLinkedList{
      * 
      * **/ 
 
+    /**
+     * 
+     * 1. 从表尾删除
+     * 
+     * **/
     pop(){
         let currentNode = this.head;
         let nextNode = currentNode.next;
@@ -242,21 +247,32 @@ class SingleLinkedList{
             return -1;
         }
 
-        let nextNextNode = nextNode.next;
+        
 
         while(nextNode){
+            let nextNextNode = nextNode.next;
             if(!nextNextNode){
                 currentNode.next = null;
                 return
             }
             currentNode = nextNode;
             nextNode = nextNextNode;
-            nextNextNode = nextNode.next;
         }
 
     }
 
-    remove(){}
+    /**
+     * 
+     * 2.删除指定结点（知道指针）
+     * 
+     * 
+     * 
+     * **/
+
+    remove(node){
+        const preNode = this.findPreNode(node);
+        preNode.next = node.next;    
+    }
 
 
 
@@ -295,7 +311,9 @@ const i3 = testList.findByIndex(3);
 testList.insert(i3, 3.5);
 testList.insertBefore(i3, 2.5);
 
-testList.pop();  // pop这里需要画图
+const i2 = testList.findByIndex(2);
+
+testList.remove(i2);  // pop这里需要画图
 
 testList.display();
 
