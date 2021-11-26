@@ -47,16 +47,13 @@ class SingleLinkedList{
         
         let currentNode = this.head;
         while(currentNode.next){
-            
             let nextNode = currentNode.next;
             if(nextNode.data ===  content){
                 return nextNode;
             }
-
+            currentNode = nextNode;
         }
-
         return -1;
-
     }
 
 
@@ -75,6 +72,12 @@ class SingleLinkedList{
         if(index<1){
             return -1;
         }
+
+        if(index>this.size){
+            return -1;
+        }
+
+        
 
         let loopIndex = 1;
         let currentNode = this.head;
@@ -99,10 +102,13 @@ class SingleLinkedList{
      * 
      * @param node:查找该结点前面的结点
      * @returns 查找到的前一个结点，找不到返回-1
+     * 
+     * 
+     * 如果是第一个结点，可以返回头结点（这种方式感觉更合理一些）
      * **/ 
     findPreNode(node){
         
-        let currentNode = this.head;
+        let currentNode = this.head.next;
         while(currentNode.next){
             if(currentNode.next === node){
                 return currentNode;
@@ -134,8 +140,16 @@ class SingleLinkedList{
      * @param node: 在该结点后面插入
      * @param element: 元素内容
      * 
+     * 
+     * 添加一个功能，对node进行判断，判断一node是否存在于链表中，
+     * 
+     * 判断二，链表为空的话，如何去插入
+     * 
      * **/ 
     insert(node, element){
+
+        // TODO1 对node,element进行判断
+        // TODO2 链表为空的话，如去插入 
        
         let newNode = new Node(element);
         
@@ -144,6 +158,8 @@ class SingleLinkedList{
 
         node.next = newNode;
         newNode.next = next;
+
+        this.size++;
        
     }
 
@@ -168,6 +184,8 @@ class SingleLinkedList{
         preNode.next = newNode;
 
         newNode.next = node;
+
+        this.size++;
 
     }
 
@@ -206,6 +224,8 @@ class SingleLinkedList{
 
     unshift(element){
 
+        // 如果element是引用类型怎么办   好像也没有啥影响
+
         let newNode = new Node(element);
 
         let next = this.head.next;
@@ -213,6 +233,8 @@ class SingleLinkedList{
         this.head.next = newNode;
 
         newNode.next = next;
+
+        this.size++;
 
     }
 
@@ -244,11 +266,9 @@ class SingleLinkedList{
         let currentNode = this.head;
         let nextNode = currentNode.next;
         if(!nextNode){
+            // 这里应报错比较合适（需要返回值的，返回-1；不需要返回值的报错）
             return -1;
         }
-
-        
-
         while(nextNode){
             let nextNextNode = nextNode.next;
             if(!nextNextNode){
@@ -270,8 +290,20 @@ class SingleLinkedList{
      * **/
 
     remove(node){
+
+        // 链表为空怎么处理（判断node是否属于当前链表）
         const preNode = this.findPreNode(node);
         preNode.next = node.next;    
+    }
+
+    removeNextNode(node){
+        if(node.next){
+            const nextNextNode = node.next.next;
+            node.next = nextNextNode;
+        }
+
+        // 改为报错
+        return -1
     }
 
 
@@ -284,7 +316,7 @@ class SingleLinkedList{
 
     display(){
         let result='';
-        let currentNode = this.head;
+        let currentNode = this.head.next;
         while(currentNode){
             result = result + currentNode.data;
             currentNode = currentNode.next;
@@ -302,21 +334,45 @@ class SingleLinkedList{
 const testList = new SingleLinkedList();
 
 testList.append(1);
-testList.append(2);
-testList.append(3);
-testList.append(4);
+// testList.append(2);
+// testList.append(3);
 
-const i3 = testList.findByIndex(3);
 
-testList.insert(i3, 3.5);
-testList.insertBefore(i3, 2.5);
 
-const i2 = testList.findByIndex(2);
+// const res1 = testList.findByIndex(1);
 
-testList.remove(i2);  // pop这里需要画图
+// const preNode = testList.findPreNode(res1);
+
+// console.log(preNode);
+
+
+
+
+
+
+
+
+
+// const res1 = testList.findByIndex(2);
+// console.log(res1);
+
+
+
+// const findRes = testList.findByContent(2);
+// console.log(findRes)
+
+
+
+const res1 = testList.findByIndex(1);
+testList.insert(res1, 12);
+testList.insert(res1, 13);
+const res2 = testList.findByIndex(4)
+
+console.log(res2);
+
+
 
 testList.display();
-
 
 
 

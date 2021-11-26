@@ -90,7 +90,7 @@ class SingleCircleLinkedList {
             const lastNode = findLastNode();
             lastNode.next = newNode;
 
-        }else {
+        } else {
             // 发现前一个结点
             const preNode = findPreNode(node);
             preNode.next = newNode;
