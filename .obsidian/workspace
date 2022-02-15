@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "第一(复杂度分析)/复杂度分析(下).md",
-            "mode": "source",
+            "file": "第二周(数组与链表)/数组.md",
+            "mode": "preview",
             "source": false
           }
         }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "第一(复杂度分析)/复杂度分析(下).md",
+                "file": "第二周(数组与链表)/数组.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,10 +89,10 @@
   },
   "active": "d11035257f97aeef",
   "lastOpenFiles": [
-    "第一(复杂度分析)/复杂度分析(下).md",
-    "第一(复杂度分析)/复杂度分析(上).md",
     "第二周(数组与链表)/数组.md",
     "第二周(数组与链表)/链表.md",
+    "第一(复杂度分析)/复杂度分析(上).md",
+    "第一(复杂度分析)/复杂度分析(下).md",
     "11_08.md",
     "README.md"
   ]
