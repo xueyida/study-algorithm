@@ -44,7 +44,6 @@ class SingleLinkedList{
      * 
      * **/
     findByContent(content){
-        
         let currentNode = this.head;
         while(currentNode.next){
             let nextNode = currentNode.next;
@@ -263,6 +262,7 @@ class SingleLinkedList{
      * 
      * **/
     pop(){
+
         let currentNode = this.head;
         let nextNode = currentNode.next;
         if(!nextNode){
@@ -331,7 +331,7 @@ class SingleLinkedList{
 }
 
 
-const testList = new SingleLinkedList();
+export const testList = new SingleLinkedList();
 
 testList.append(1);
 // testList.append(2);
